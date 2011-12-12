@@ -18,32 +18,31 @@ call pathogen#infect()
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
 " syntax highlight
 syntax on
 
-" auto-detect the filetype
-filetype plugin indent on
-
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-
-" Enable all VIM features
-set nocompatible
 
 " Prevent some security exploits having to do with modelines in files.
 set modelines=0
 
-" Create an undo file - not needed? Nate?
+" Store undo history in an external file - allows undoing even if the file
+" has been closed and reopened
 set undofile
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM User Interface 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Tabs are 4 characters
-set tabstop=4
-set softtabstop=4
+" Remap leader character to comma - easier to reach than \ (the default)
+let mapleader = ","
 
-" (Auto)indent uses 4 characters
-set shiftwidth=4
-
-" spaces instead of tabs
-set expandtab
+set ruler " show the cursor position all the time
+set number " show line numbers
 
 " UTF-8 Encoding
 set encoding=utf-8
@@ -56,12 +55,6 @@ set showmode
 
 " Show partial commands
 set showcmd
-
-" guess indentation
-set autoindent
-
-" line numbers, rulers, and everything else
-set ruler
 
 " Always show the last status
 set laststatus=2
@@ -76,6 +69,12 @@ set wrap
 " show line numbers
 set number
 
+" Folding
+
+" Save and reload fold state
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
 " Fold using markers {{{
 " like this
 " }}}
@@ -84,31 +83,33 @@ set foldmethod=marker
 " powerful backspaces
 set backspace=indent,eol,start
 
-" Ignore case while searching.
-set ignorecase
+" Search Configuration
+set ignorecase " Ignore case while searching.
+set smartcase " When uppercase is used, do case sensitive search.
+set gdefault " Enable global search/replace (/g/) by default.
+set hlsearch " highlight the searchterms
+set incsearch " jump to the matches while typing
+set showmatch " Show matching brackets when text indicator is over them
+"
+" Clear search results with leader + space
+nnoremap <leader><space> :noh<cr>
 
-" When uppercase is used, do case sensitive search.
-set smartcase
 
-" Enable global search/replace (/g/) by default.
-set gdefault
+" No sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
 
-" highlight the searchterms
-set hlsearch
-
-" jump to the matches while typing
-set incsearch
-
-" show matching braces
-set showmatch
-
-" For consideration.
-" nnoremap <leader><space> :noh<cr>
-" nnoremap <tab> %
-" vnoremap <tab> %
+" Use tab - which is much easier to reach than % - to navigate bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Autosave when focus is lost.
 au FocusLost * :wa
+
+" Use ctrl + c/x to copy/cut visual mode selection to OS X clipboard (pasteboard)
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
 
 " Set word wrap character limit.
 " set textwidth=0
@@ -118,7 +119,7 @@ set textwidth=79
 "set formatoptions=qrn1
 
 " Set a colored bar at 85 to help avoid long lines of code.
-" set colorcolumn=85
+set colorcolumn=85
 
 " Show invisible characters.
 set list
@@ -144,6 +145,8 @@ set wildmode=list:longest
 set visualbell
 
 " Highlight the current line.
+" This setting is on probation - it looks great in MacVim and horrible in
+" terminal
 set cursorline
 
 " Improves redrawing.
@@ -181,11 +184,27 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Set 256 colors
 set t_Co=256
 
-" Set color theme.
-colorscheme dw_red
+" Set your color scheme in .vimrc.supplemental - this is one place it's
+" okay to be different.
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab, and indent related 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set smarttab
+set autoindent
 
 " Code completion.
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -201,6 +220,22 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " Set the command window height to 2 lines, to avoid many cases of having to "press <Enter> to continue"
 set cmdheight=2
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Awesome Sauce 
+"    Crazy, useful stuff for doing particular, awesome things.
+"
+"    By implication, other settings should be more general.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Create a new line below the current one of the same length with = chars
+nnoremap <leader>1 yypVr=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" http://vimdoc.sourceforge.net/htmldoc/filetype.html
+filetype plugin on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Supplemental 
