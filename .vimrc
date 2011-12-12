@@ -217,7 +217,8 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " http://vim.wikia.com/wiki/Example_vimrc
 
-" Set the command window height to 2 lines, to avoid many cases of having to "press <Enter> to continue"
+" Set the command window height to 2 lines, to avoid many cases of
+" having to "press <Enter> to continue"
 set cmdheight=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
