@@ -1,135 +1,189 @@
-"                                    /$$
-"                                   | $$
-"       /$$$$$$   /$$$$$$   /$$$$$$ | $$  /$$$$$$
-"      /$$__  $$ |____  $$ /$$__  $$| $$ /$$__  $$
-"     | $$$$$$$$  /$$$$$$$| $$  \ $$| $$| $$$$$$$$
-"     | $$_____/ /$$__  $$| $$  | $$| $$| $$_____/
-"  /$$|  $$$$$$$|  $$$$$$$|  $$$$$$$| $$|  $$$$$$$
-" |__/ \_______/ \_______/ \____  $$|__/ \_______/
-"                          /$$  \ $$
-"                         |  $$$$$$/
-"                          \______/
-"
-" Nate Eagle's .vimrc file.
-" =========================
-" If my .vimrc file is going to suck, it might as well be because I 
-" assembled it.
-"
-" Maintainer:	Nate Eagle <nate@nateeagle.com>
-" Last Change:	2010 Feb 06
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
-" Sets how many lines of history VIM has to remember
-set history=300
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-filetype off
-" Pathogen: https://github.com/tpope/vim-pathogen
+" Install Pathogen
 call pathogen#infect()
+
+" syntax highlight
+syntax on
+
+" auto-detect the filetype
 filetype plugin indent on
 
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+
+" Enable all VIM features
+set nocompatible
+
+" Prevent some security exploits having to do with modelines in files.
 set modelines=0
 
+" Create an undo file - not needed? Nate?
 set undofile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM User Interface 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Remap leader character to comma - easier to reach than \ (the default)
-let mapleader = ","
-
-set ruler " show the cursor position all the time
-set number " show line numbers
-
-" Set backspace configuration
-set backspace=eol,start,indent
-
-" Search Configuration
-set ignorecase " Ignore case when searching
-set smartcase " Do case-sensitive search when one or more characters are uppercase
-set gdefault " global search/replace is the default
-set hlsearch " Hilight search results
-set incsearch " do incremental searching
-
-set showmatch " Show matching brackets when text indicator is over them
-
-" Clear search results with leader + space
-nnoremap <leader><space> :noh<cr>
-
-" Use tab - which is much easier to reach than % - to navigate bracket pairs
-nnoremap <tab> %
-vnoremap <tab> %
-
-" Create a new line below the current one of the same length with = chars
-nnoremap <leader>1 yypVr=
-
-" No sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-
-" Folding
-" Save and reload fold state
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
-
-" Save file when losing focus
-au FocusLost * :wa
-
-" Use ctrl + c/x to copy/cut visual mode selection to OS X clipboard (pasteboard)
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme wombat
-syntax enable " Enable syntax highlighting
-
-" Set font according to system
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files and Backups 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab, and indent related 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set expandtab
-set shiftwidth=4
-set softtabstop=4
+" Tabs are 4 characters
 set tabstop=4
-set smarttab
+set softtabstop=4
+
+" (Auto)indent uses 4 characters
+set shiftwidth=4
+
+" spaces instead of tabs
+set expandtab
+
+" UTF-8 Encoding
+set encoding=utf-8
+
+" Keep 3 lines from previous page when scrolling
+set scrolloff=3
+
+" Displays the current mode (i.e. -- INSERT --, -- VISUAL --, etc.)
+set showmode
+
+" Show partial commands
+set showcmd
+
+" guess indentation
 set autoindent
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Filetype settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" line numbers, rulers, and everything else
+set ruler
 
-" Set filetype for EE templates on nateeagle.com via Mountee
-autocmd BufRead,BufNewFile /Volumes/nateeagle.com/* set filetype=html
+" Always show the last status
+set laststatus=2
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" http://blog.interlinked.org/tutorials/vim_tutorial.html
 
-filetype plugin on
+" long lines
+set wrap
+" Expand the command line using tab
+" set wildchar=<Tab>
 
+" show line numbers
+set number
+
+" Fold using markers {{{
+" like this
+" }}}
+set foldmethod=marker
+
+" powerful backspaces
+set backspace=indent,eol,start
+
+" Ignore case while searching.
+set ignorecase
+
+" When uppercase is used, do case sensitive search.
+set smartcase
+
+" Enable global search/replace (/g/) by default.
+set gdefault
+
+" highlight the searchterms
+set hlsearch
+
+" jump to the matches while typing
+set incsearch
+
+" show matching braces
+set showmatch
+
+" For consideration.
+" nnoremap <leader><space> :noh<cr>
+" nnoremap <tab> %
+" vnoremap <tab> %
+
+" Autosave when focus is lost.
+au FocusLost * :wa
+
+" Set word wrap character limit.
+" set textwidth=0
+set textwidth=79
+
+" Not sure what this formatting does, but it is recommended.
+"set formatoptions=qrn1
+
+" Set a colored bar at 85 to help avoid long lines of code.
+" set colorcolumn=85
+
+" Show invisible characters.
+set list
+set listchars=tab:▸\ ,eol:¬
+
+" history
+set history=50
+
+" 1000 undo levels
+set undolevels=1000
+
+" write before hiding a buffer
+set autowrite
+
+" allows hidden buffers to stay unsaved
+set hidden
+
+" Enable the wild menu.
+set wildmenu
+set wildmode=list:longest
+
+" Use visual bell instead of beeping when doing something wrong
+set visualbell
+
+" Highlight the current line.
+set cursorline
+
+" Improves redrawing.
+set ttyfast
+
+"set wmh=0
+
+" we use a dark background, don't we?
+set background=dark
+
+" Always show the menu, insert longest match
+set completeopt=menuone,longest
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
+" Map visual editor to key directions.
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <c-h> <c-w>h
 map <c-l> <c-w>l
+
+" Turn off the arrow keys - learn to use hjkl
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
+" Set 256 colors
+set t_Co=256
+
+" Set color theme.
+colorscheme dw_red
+
+" Code completion.
+" autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+" autocmd FileType c set omnifunc=ccomplete#Complete
+
+" http://vim.wikia.com/wiki/Example_vimrc
+
+" Set the command window height to 2 lines, to avoid many cases of having to "press <Enter> to continue"
+set cmdheight=2
+
