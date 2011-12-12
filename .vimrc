@@ -1,6 +1,22 @@
-
-" Install Pathogen
+"   /$$$$$$                /$$             /$$                                  
+"  /$$__  $$              | $$            |__/                                  
+" | $$  \__//$$$$$$   /$$$$$$$  /$$    /$$ /$$ /$$$$$$/$$$$   /$$$$$$   /$$$$$$$
+" | $$$$   /$$__  $$ /$$__  $$ |  $$  /$$/| $$| $$_  $$_  $$ /$$__  $$ /$$_____/
+" | $$_/  | $$$$$$$$| $$  | $$  \  $$/$$/ | $$| $$ \ $$ \ $$| $$  \__/| $$      
+" | $$    | $$_____/| $$  | $$   \  $$$/  | $$| $$ | $$ | $$| $$      | $$      
+" | $$    |  $$$$$$$|  $$$$$$$ /$$\  $/   | $$| $$ | $$ | $$| $$      |  $$$$$$$
+" |__/     \_______/ \_______/|__/ \_/    |__/|__/ |__/ |__/|__/       \_______/
+"
+" Every FED needs a .vimrc. Why have a million when you could make an awesome one?
+"
+" Maintainers: Dave Artz and Nate Eagle
+                                                                              
+" " Install Pathogen
 call pathogen#infect()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " syntax highlight
 syntax on
@@ -131,9 +147,7 @@ set visualbell
 set cursorline
 
 " Improves redrawing.
-set ttyfast
-
-"set wmh=0
+set ttyfast "set wmh=0
 
 " we use a dark background, don't we?
 set background=dark
@@ -187,3 +201,12 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " Set the command window height to 2 lines, to avoid many cases of having to "press <Enter> to continue"
 set cmdheight=2
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Supplemental 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Maybe there are some things you want in your .vimrc that you REALLY
+" can't get everyone else to agree to. Put them in .vimrc.supplemental
+
+runtime .vimrc.supplemental
