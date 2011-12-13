@@ -104,6 +104,14 @@ set t_vb=
 nnoremap <tab> %
 vnoremap <tab> %
 
+" Visual mode blockwise indent
+" This keeps the current visual block selection active after changing indent
+" with '<' or '>'. Usually the visual block selection is lost after you shift
+" it, which is incredibly annoying.
+" http://vim.wikia.com/wiki/Short_mappings_for_common_tasks
+vmap > >gv
+vmap < <gv
+
 " Autosave when focus is lost.
 au FocusLost * :wa
 
