@@ -13,6 +13,7 @@
                                                                               
 " " Install Pathogen
 call pathogen#infect()
+call pathogen#helptags()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
