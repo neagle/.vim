@@ -72,8 +72,8 @@ set number
 " Folding
 
 " Save and reload fold state
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
 
 " Fold using markers {{{
 " like this
@@ -108,7 +108,6 @@ vnoremap <tab> %
 " This keeps the current visual block selection active after changing indent
 " with '<' or '>'. Usually the visual block selection is lost after you shift
 " it, which is incredibly annoying.
-" http://vim.wikia.com/wiki/Short_mappings_for_common_tasks
 vmap > >gv
 vmap < <gv
 
