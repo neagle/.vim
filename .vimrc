@@ -1,16 +1,16 @@
-"   /$$$$$$                /$$             /$$                                  
-"  /$$__  $$              | $$            |__/                                  
+"   /$$$$$$                /$$             /$$
+"  /$$__  $$              | $$            |__/
 " | $$  \__//$$$$$$   /$$$$$$$  /$$    /$$ /$$ /$$$$$$/$$$$   /$$$$$$   /$$$$$$$
 " | $$$$   /$$__  $$ /$$__  $$ |  $$  /$$/| $$| $$_  $$_  $$ /$$__  $$ /$$_____/
-" | $$_/  | $$$$$$$$| $$  | $$  \  $$/$$/ | $$| $$ \ $$ \ $$| $$  \__/| $$      
-" | $$    | $$_____/| $$  | $$   \  $$$/  | $$| $$ | $$ | $$| $$      | $$      
+" | $$_/  | $$$$$$$$| $$  | $$  \  $$/$$/ | $$| $$ \ $$ \ $$| $$  \__/| $$
+" | $$    | $$_____/| $$  | $$   \  $$$/  | $$| $$ | $$ | $$| $$      | $$
 " | $$    |  $$$$$$$|  $$$$$$$ /$$\  $/   | $$| $$ | $$ | $$| $$      |  $$$$$$$
 " |__/     \_______/ \_______/|__/ \_/    |__/|__/ |__/ |__/|__/       \_______/
 "
 " Every FED needs a .vimrc. Why have a million when you could make an awesome one?
 "
 " Maintainers: Dave Artz and Nate Eagle
-                                                                              
+
 " " Install Pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -36,7 +36,7 @@ set modelines=0
 set undofile
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM User Interface 
+" => VIM User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remap leader character to comma - easier to reach than \ (the default)
@@ -193,7 +193,7 @@ nnoremap j gj
 nnoremap k gk
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts 
+" => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set 256 colors
@@ -204,7 +204,7 @@ set t_Co=256
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab, and indent related 
+" => Text, tab, and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set expandtab
@@ -229,11 +229,11 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " having to "press <Enter> to continue"
 set cmdheight=2
 
-" Automatically strip trailing whitespace.
+" Automatically strip trailing whitespace on file save.
 autocmd BufWritePre * :%s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Awesome Sauce 
+" => Awesome Sauce
 "    Crazy, useful stuff for doing particular, awesome things.
 "
 "    By implication, other settings should be more general.
@@ -243,14 +243,14 @@ autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <leader>1 yypVr=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins 
+" => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " http://vimdoc.sourceforge.net/htmldoc/filetype.html
 filetype plugin on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Supplemental 
+" => Supplemental
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Maybe there are some things you want in your .vimrc that you REALLY
