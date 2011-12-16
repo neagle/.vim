@@ -1,19 +1,15 @@
-"   /$$$$$$                /$$             /$$                                  
-"  /$$__  $$              | $$            |__/                                  
+"   /$$$$$$                /$$             /$$
+"  /$$__  $$              | $$            |__/
 " | $$  \__//$$$$$$   /$$$$$$$  /$$    /$$ /$$ /$$$$$$/$$$$   /$$$$$$   /$$$$$$$
 " | $$$$   /$$__  $$ /$$__  $$ |  $$  /$$/| $$| $$_  $$_  $$ /$$__  $$ /$$_____/
-" | $$_/  | $$$$$$$$| $$  | $$  \  $$/$$/ | $$| $$ \ $$ \ $$| $$  \__/| $$      
-" | $$    | $$_____/| $$  | $$   \  $$$/  | $$| $$ | $$ | $$| $$      | $$      
+" | $$_/  | $$$$$$$$| $$  | $$  \  $$/$$/ | $$| $$ \ $$ \ $$| $$  \__/| $$
+" | $$    | $$_____/| $$  | $$   \  $$$/  | $$| $$ | $$ | $$| $$      | $$
 " | $$    |  $$$$$$$|  $$$$$$$ /$$\  $/   | $$| $$ | $$ | $$| $$      |  $$$$$$$
 " |__/     \_______/ \_______/|__/ \_/    |__/|__/ |__/ |__/|__/       \_______/
 "
 " Every FED needs a .vimrc. Why have a million when you could make an awesome one?
 "
 " Maintainers: Dave Artz and Nate Eagle
-                                                                              
-" " Install Pathogen
-"call pathogen#infect()
-"call pathogen#helptags()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -22,6 +18,44 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
+
+" Use Vundle to manage bundles (plugins) and keep them up-to-date
+" https://github.com/gmarik/vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+"Bundle 'tpope/vim-fugitive'
+" Functions and mappings to close HTML/XML tags
+Bundle 'docunext/closetag.vim'
+
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'tpope/vim-rails.git'
+" vim-scripts repos
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" ...
+
+ filetype plugin indent on     " required!
+ "
+ " Brief help
+ " :BundleList          - list configured bundles
+ " :BundleInstall(!)    - install(update) bundles
+ " :BundleSearch(!) foo - search(or refresh cache first) for foo
+ " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " NOTE: comments after Bundle command are not allowed..
 
 " syntax highlight
 syntax on
@@ -36,7 +70,7 @@ set modelines=0
 set undofile
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM User Interface 
+" => VIM User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remap leader character to comma - easier to reach than \ (the default)
@@ -193,7 +227,7 @@ nnoremap j gj
 nnoremap k gk
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts 
+" => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set 256 colors
@@ -204,7 +238,7 @@ set t_Co=256
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab, and indent related 
+" => Text, tab, and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set expandtab
@@ -233,7 +267,7 @@ set cmdheight=2
 autocmd BufWritePre * :%s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Awesome Sauce 
+" => Awesome Sauce
 "    Crazy, useful stuff for doing particular, awesome things.
 "
 "    By implication, other settings should be more general.
@@ -243,14 +277,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 nnoremap <leader>1 yypVr=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins 
+" => Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" http://vimdoc.sourceforge.net/htmldoc/filetype.html
-filetype plugin on
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Supplemental 
+" => Supplemental
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Maybe there are some things you want in your .vimrc that you REALLY
