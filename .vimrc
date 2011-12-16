@@ -12,8 +12,8 @@
 " Maintainers: Dave Artz and Nate Eagle
                                                                               
 " " Install Pathogen
-call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#infect()
+"call pathogen#helptags()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
