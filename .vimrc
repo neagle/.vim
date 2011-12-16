@@ -229,6 +229,9 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " having to "press <Enter> to continue"
 set cmdheight=2
 
+" Automatically strip trailing whitespace.
+autocmd BufWritePre * :%s/\s\+$//e
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Awesome Sauce 
 "    Crazy, useful stuff for doing particular, awesome things.
