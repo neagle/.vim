@@ -263,7 +263,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " having to "press <Enter> to continue"
 set cmdheight=2
 
-" Automatically strip trailing whitespace.
+" Automatically strip trailing whitespace on file save.
 autocmd BufWritePre * :%s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
