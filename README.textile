@@ -2,4 +2,4 @@ h1. .vim
 
 p. This repo contains the .vim directory with support files for the Artz/Eagle Vim setup. It includes the .vimrc file - to use it, create a file that links to this one in your home directory.
 
-bc. ln -s ~/.vim/.vimrc .vimrc
+bc. $ ln -s ~/.vim/.vimrc ~/.vimrc
