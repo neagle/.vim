@@ -1,1 +1,4 @@
 .vimrc.supplemental
+.mybundles
+bundle/*
+!bundle/vundle

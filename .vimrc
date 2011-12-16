@@ -34,7 +34,6 @@ Bundle 'gmarik/vundle'
 " original repos on github
 "Bundle 'tpope/vim-fugitive'
 " Functions and mappings to close HTML/XML tags
-Bundle 'docunext/closetag.vim'
 
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -45,6 +44,11 @@ Bundle 'docunext/closetag.vim'
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 " ...
+
+" Having plugins you don't know shit about is significantly worse than having no
+" no plugins at all. Put plugins you want to use or try in ~/.vim/.mybundles
+" Then run :BundleInstall from inside Vim
+runtime .mybundles
 
  filetype plugin indent on     " required!
  "
