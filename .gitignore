@@ -2,3 +2,4 @@
 .mybundles
 bundle/*
 !bundle/vundle
+*.un~
