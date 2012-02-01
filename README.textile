@@ -3,3 +3,14 @@ h1. .vim
 p. This repo contains the .vim directory with support files for the Artz/Eagle Vim setup. It includes the .vimrc file - to use it, create a file that links to this one in your home directory.
 
 bc. $ ln -s ~/.vim/.vimrc ~/.vimrc
+
+p. The Vundle plugin manager, which is another repo on Github, must be added
+manually. (Surely there is a better way to do this. Help?)
+
+bc. $ git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+p. At this time, no bundles are included so that each user can maintain
+prefered bundles privately. This is because, in my experience, having a bundle
+(plugin) you're not really familiar with is much more likely to cause problems
+than it is to help. Bundles should be added carefully and only when the user
+perceives a need for them.
