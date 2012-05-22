@@ -18,7 +18,7 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-filetype off
+filetype off " required!
 
 " Use Vundle to manage bundles (plugins) and keep them up-to-date
 " https://github.com/gmarik/vundle
@@ -64,6 +64,8 @@ runtime .mybundles
 " syntax highlight
 syntax on
 
+filetype on
+
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
 " Prevent some security exploits having to do with modelines in files.
@@ -72,6 +74,9 @@ set modelines=0
 " Store undo history in an external file - allows undoing even if the file
 " has been closed and reopened
 set undofile
+set undodir=~/.vim/undo
+
+set noswapfile
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM User Interface
@@ -101,7 +106,7 @@ set laststatus=2
 " http://blog.interlinked.org/tutorials/vim_tutorial.html
 
 " long lines
-set wrap
+" set wrap
 " Expand the command line using tab
 " set wildchar=<Tab>
 
@@ -133,6 +138,25 @@ set showmatch " Show matching brackets when text indicator is over them
 " Clear search results with leader + space
 nnoremap <leader><space> :noh<cr>
 
+" Easily edit the .vimrc file
+nmap <leader>v :vsplit $MYVIMRC<CR>
+
+" Toggle the color column
+nmap <leader>tc :call ToggleColorColumn()<CR>
+
+function! ToggleColorColumn()
+    if &colorcolumn == 0
+        execute "set colorcolumn=85"
+    else
+        execute "set colorcolumn=0"
+    endif
+endfunction
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd! bufwritepost .vimrc source $MYVIMRC
+endif
+
 
 " No sound on errors
 set noerrorbells
@@ -150,6 +174,10 @@ vnoremap <tab> %
 vmap > >gv
 vmap < <gv
 
+" Select the text you just pasted with 'gp'
+" http://vim.wikia.com/wiki/Selecting_your_pasted_text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 " Autosave when focus is lost.
 au FocusLost * :wa
 
@@ -157,9 +185,20 @@ au FocusLost * :wa
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
+nmap <leader>gc :call CopyEntireFile()<CR>
+
+function! CopyEntireFile()
+    let lline=line(".")
+    "execute 'echo lline'
+    execute 'normal! ggVG'
+    execute 'silent !pbcopy'
+    execute ':redraw!'
+    execute 'normal! V' . lline . 'G'
+endfunction
+
 " Set word wrap character limit.
 " set textwidth=0
-set textwidth=79
+"set textwidth=79
 
 " Not sure what this formatting does, but it is recommended.
 "set formatoptions=qrn1
@@ -219,10 +258,6 @@ map <c-h> <c-w>h
 map <c-l> <c-w>l
 
 " Turn off the arrow keys - learn to use hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
@@ -249,8 +284,8 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set smarttab
-set autoindent
+"set smarttab
+"set autoindent
 
 " Code completion.
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -269,6 +304,11 @@ set cmdheight=2
 
 " Automatically strip trailing whitespace on file save.
 autocmd BufWritePre * :%s/\s\+$//e
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Custom Filetypes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.zsh setlocal filetype=zsh
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Awesome Sauce
