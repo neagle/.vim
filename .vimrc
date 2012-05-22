@@ -65,6 +65,7 @@ runtime .mybundles
 syntax on
 
 filetype on
+filetype plugin on
 
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
@@ -164,8 +165,10 @@ set novisualbell
 set t_vb=
 
 " Use tab - which is much easier to reach than % - to navigate bracket pairs
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap <tab> %
+"vnoremap <tab> %
+nmap <tab> %
+vmap <tab> %
 
 " Visual mode blockwise indent
 " This keeps the current visual block selection active after changing indent
