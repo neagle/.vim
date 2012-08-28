@@ -147,11 +147,14 @@ nmap <leader>tc :call ToggleColorColumn()<CR>
 
 function! ToggleColorColumn()
     if &colorcolumn == 0
-        execute "set colorcolumn=85"
+        execute "set colorcolumn=80,120"
     else
         execute "set colorcolumn=0"
     endif
 endfunction
+
+" Turn on the color column initially
+"call ToggleColorColumn()
 
 " Source the vimrc file after saving it
 if has("autocmd")
@@ -206,10 +209,6 @@ endfunction
 " Not sure what this formatting does, but it is recommended.
 "set formatoptions=qrn1
 
-" Set a colored bar at 85 to help avoid long lines of code.
-set colorcolumn=85
-
-" Show invisible characters.
 set list
 set listchars=tab:▸\ ,eol:¬
 
@@ -322,6 +321,7 @@ autocmd BufNewFile,BufRead *.zsh setlocal filetype=zsh
 
 " Create a new line below the current one of the same length with = chars
 nnoremap <leader>1 yypVr=
+nnoremap <leader>2 yypVr-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
