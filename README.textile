@@ -4,13 +4,10 @@ p. This repo contains the .vim directory with support files for the Artz/Eagle V
 
 bc. $ ln -s ~/.vim/.vimrc ~/.vimrc
 
-p. The Vundle plugin manager, which is another repo on Github, must be added
-manually. (Surely there is a better way to do this. Help?)
+To pull in gmarik/vundle, which we're using to manage plugins, run a submodule update.
 
-bc. $ git clone http://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+bc. $ git submodule update --init --recursive
 
-p. At this time, no bundles are included so that each user can maintain
-prefered bundles privately. This is because, in my experience, having a bundle
-(plugin) you're not really familiar with is much more likely to cause problems
-than it is to help. Bundles should be added carefully and only when the user
-perceives a need for them.
+In Vim, to install the bundles for the first time, run
+
+bc. :BundleInstall
