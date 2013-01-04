@@ -1,0 +1,14 @@
+" Bundles that are included in the repo
+
+" original repos on Github
+Bundle 'scrooloose/syntastic'
+Bundle 'edsono/vim-matchit'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-endwise'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-liquid'
+Bundle 'timcharper/textile.vim'
+Bundle 'docunext/closetag.vim'
+" vim-scripts repos
+
