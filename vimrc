@@ -371,12 +371,3 @@ nnoremap <leader>n :lnext<cr>
 " can't get everyone else to agree to. Put them in ~.vimrc.settings
 
 execute "silent! source ~/.vimrc.settings"
-
-function! SyntaxCheckers_javascript_GetLocList()
-    " node-jshint uses .jshintrc as config unless --config arg is present
-    let args = !empty(g:syntastic_javascript_jshint_conf) ? ' --config ' . g:syntastic_javascript_jshint_conf : ''
-    let makeprg = 'jshint ' . shellescape(expand("%")) . args
-    let errorformat = '%ELine %l:%c,%Z\\s%#Reason: %m,%C%.%#,%f: line %l\, col %c\, %m,%-G%.%#'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'defaults': {'bufnr': bufnr('')} })
-endfunction
-
