@@ -307,10 +307,10 @@ autocmd FileType scss setlocal shiftwidth=2
 autocmd FileType scss setlocal tabstop=2
 autocmd FileType scss setlocal softtabstop=2
 
-set softtabstop=4
-set tabstop=4
-set smarttab
-set autoindent
+"set softtabstop=4
+"set tabstop=4
+"set smarttab
+"set autoindent
 
 " Code completion.
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
