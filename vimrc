@@ -222,6 +222,9 @@ endfunction
 set list
 set listchars=tab:▸\ ,eol:¬
 
+" http://stackoverflow.com/questions/4726882/how-do-you-change-the-background-color-of-the-empty-tab-space-in-vim
+"hi TabLineFill term=bold cterm=bold ctermbg=0
+
 " history
 set history=50
 
@@ -293,8 +296,8 @@ set t_Co=256
 " => Text, tab, and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set expandtab
-set shiftwidth=4
+"set expandtab
+"set shiftwidth=4
 
 " Set shiftwidth to 2 for heavily nested filetypes
 autocmd FileType javascript setlocal shiftwidth=2
@@ -329,6 +332,9 @@ set cmdheight=2
 
 " Automatically strip trailing whitespace on file save.
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Automatically toggle paste mode
+:imap <D-V> ^O"+p
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Custom Filetypes
