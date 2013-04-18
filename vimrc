@@ -285,6 +285,7 @@ nnoremap k gk
 " Set 256 colors
 set t_Co=256
 
+colorscheme solarized
 " Set your color scheme in .vimrc-personal - this is one place it's
 " okay to be different.
 
