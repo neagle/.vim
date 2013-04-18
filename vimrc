@@ -70,6 +70,9 @@ syntax on
 filetype on
 filetype plugin on
 
+" http://vim.wikia.com/wiki/Omni_completion
+set ofu=syntaxcomplete#Complete
+
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
 " Prevent some security exploits having to do with modelines in files.
@@ -281,20 +284,35 @@ nnoremap j gj
 nnoremap k gk
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
+" => Windows, Splits, and Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Make sure new file explorer splits are equal width/height
+let g:netrw_winsize=''
+
+" Map new file explorer splits to <leader>s + <direction>
+nnoremap <leader>sk :Hex!<cr>
+nnoremap <leader>sl :Vex!<cr>
+nnoremap <leader>sj :Hex<cr>
+nnoremap <leader>sh :Vex<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set 256 colors
 set t_Co=256
 
-" Set your color scheme in .vimrc-personal - this is one place it's
+" Set your color scheme in .vimrc.supplemental - this is one place it's
 " okay to be different.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab, and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set shiftwidth=2
+set tabstop=2
 
 "set expandtab
 "set shiftwidth=4
@@ -364,16 +382,19 @@ let g:TextileBrowser="Google Chrome"
 " Syntastic Mode
 nnoremap <leader>e :Errors<cr>
 
+" Syntastic Settings
+let g:syntastic_php_checkers=['php', 'phpcs', 'phpmd']
+let g:syntastic_phpcs_conf='--standard=PSR2 --tab-width=4'
 " https://github.com/scrooloose/syntastic/blob/master/doc/syntastic.txt#L238
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['scss'] }
 
 nnoremap <leader>n :lnext<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Personal Settings
+" => Supplemental
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Maybe there are some things you want in your .vimrc that you REALLY
-" can't get everyone else to agree to. Put them in ~.vimrc.settings
+" can't get everyone else to agree to. Put them in .vimrc.supplemental
 
-execute "silent! source ~/.vimrc.settings"
+runtime .vimrc.supplemental
