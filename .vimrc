@@ -15,51 +15,11 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-filetype off " required!
-
-" Use Vundle to manage bundles (plugins) and keep them up-to-date
-" https://github.com/gmarik/vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-"Bundle 'tpope/vim-fugitive'
-" Functions and mappings to close HTML/XML tags
-
-"Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-"Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" ...
-
 " Having plugins you don't know shit about is significantly worse than having no
-" no plugins at all. Put plugins you want to use or try in ~/.vim/.mybundles
+" no plugins at all. Put plugins you want to use or try in ~/.vim/bundles.vim
 " Then run :BundleInstall from inside Vim
-runtime .mybundles
+source ~/.vim/bundles.vim
 
- filetype plugin indent on     " required!
- "
- " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Bundle command are not allowed..
 
 " syntax highlight
 syntax on
@@ -274,9 +234,11 @@ nnoremap k gk
 " Set 256 colors
 set t_Co=256
 
-" Set your color scheme in .vimrc.supplemental - this is one place it's
-" okay to be different.
-
+" Set to the best color scheme in the world.
+" http://ethanschoonover.com/solarized
+" Note: This may be overridden in your .vimrc.supplemental if an inferior
+" color scheme is preferred.
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab, and indent related
